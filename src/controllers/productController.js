@@ -2,9 +2,6 @@ import asyncHandler from "express-async-handler";
 
 import Product from "../models/productModel.js";
 
-// @desc    Fetch all Products
-// @route   Get /api/products
-// @access  Public
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 3;
   const page = Number(req.query.pageNumber) || 1;
@@ -25,10 +22,6 @@ const getProducts = asyncHandler(async (req, res) => {
 
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
-
-// @desc    Fetch Single Product
-// @route   Get /api/product/:id
-// @access  Public
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -39,10 +32,6 @@ const getProductById = asyncHandler(async (req, res) => {
     throw new Error("Product not Found!");
   }
 });
-
-// @desc    Delete a product
-// @route   DELETE /api/product/:id
-// @access  Private/Admin
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -149,9 +138,6 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get Top rated products
-// @route   GET /api/products/top
-// @access  Public
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(3);
 
