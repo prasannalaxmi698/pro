@@ -10,10 +10,9 @@ import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
 import Meta from "../components/Meta";
 import ProductCarousel from "../components/ProductCarousel";
-import {  useParams } from 'react-router-dom';
+
 
 const HomeScreen = ({ match }) => {
-  const { params } = useParams();
   const keyword = match.params.keyword;
 
   const pageNumber = match.params.pageNumber || 1;

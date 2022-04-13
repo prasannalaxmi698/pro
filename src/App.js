@@ -19,17 +19,16 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
-import {  useParams } from 'react-router-dom';
 
 const App = () => {
-  const { id } = useParams();
   return (
     <Router>
-    <Routes>
+    
       <Header />
+      
       <div className="py-3">
         <Container>
-        
+        <Routes>
           <Route path="/order/:id" element={<OrderScreen />} />
           <Route path="/placeorder" element={<PlaceOrderScreen />} />
           <Route path="/payment" element={<PaymentScreen />} />
@@ -61,11 +60,12 @@ const App = () => {
             element={<HomeScreen />}
           />
           <Route exact path="/" element={<HomeScreen />} />
-          
+          </Routes>
         </Container>
       </div>
+      
       <Footer />
-      </Routes>
+      
     </Router>
   );
 };
